@@ -23,7 +23,7 @@ const Nav = props => {
             <a href="/">
                 Home
             </a>
-            <a href="https://github.com/xtina-lt">
+            <a href="https://github.com/xtina-lt/group-project">
                 GitHub
             </a>
             <a href="/memory-box">
