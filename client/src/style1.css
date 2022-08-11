@@ -165,7 +165,7 @@ button, a{
         color: rgba(161, 84, 76,0.9);
         text-decoration: none;
     }
-    button:hover {
+    a:hover, button:hover {
         transform: translateY(-0.25vh);
         cursor: pointer;
     }
