@@ -148,6 +148,7 @@ button, a{
     text-decoration: none;
     font-family: inherit;
     font-family: Cinzel;
+    font-weight: inherit;
 }
     .fancy-button {
         display: block;
