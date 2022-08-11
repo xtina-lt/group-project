@@ -29,6 +29,7 @@ const Nav = props => {
             <a href="/memory-box">
                 Memory Box
             </a>
+            {Cookies.get('userId')}
             {
                 (isLogged) ?
                 <button onClick={handleLogout}>

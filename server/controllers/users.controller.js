@@ -31,7 +31,7 @@ const register = async (req, res) => {
             // create a token
             const token = jwt.sign(payload, SECRET)
             res.cookie('userToken', token, { expires: new Date(Date.now() + 900000) })
-            res.cookie('userId', user._id)
+            res.cookie('userId', data._id.toString())
             .json({ successMessage: 'userToken: ', user: payload })
         }
     } catch (err) {
@@ -55,7 +55,7 @@ const login = async (req, res) => {
                 const payload = { _id: user._id, email: user.email, first: user.first }
                 const token = jwt.sign(payload, SECRET)
                 res.cookie('userToken', token, { expires: new Date(Date.now() + 900000) })
-                res.cookie('userId', user._id)
+                res.cookie('userId', user._id.toString())
                 .json({ successMessage: 'userToken: ', user: payload })
             }
         }
