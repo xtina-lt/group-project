@@ -56,7 +56,21 @@ html{
             color: rgba(206, 155, 103, 0.8);
             /* animation */
             animation: fadeInAnimation ease 3s, glow 1s ease-in-out infinite alternate;
+            /* display */
+            display: flex;
+            justify-content: space-evenly;
         }
+        header > div {
+            font-family: "Cinzel Decorative";
+        }
+            .special-header{
+                height: inherit;
+                font-family: "Cinzel Decorative";
+                font-size: 2vh;
+                align-items: center;
+                display: flex;
+            }
+        
         
         nav{
             background-color: rgba(237, 203, 157, 0.2);
