@@ -1,1 +1,18 @@
-test
+[ BUCKET LIST   |]
+[about] : details
+{name: swim with dolphins, complete : boolean}  
+{name: swim with dolphins, complete : boolean }  
+{name: swim with dolphins, complete : boolean } 
+{name: swim with dolphins, complete : boolean }  
+
+
+See one:
+-price: 500, complete: false, notes: [], picture: string, users: ['id1', 'id2'], users: ['id1', 'id2']
+- copy
+
+Login
+
+
+
+Dashboard:
+-own memories, create, edit own memories
