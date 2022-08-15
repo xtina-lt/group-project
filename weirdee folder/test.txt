@@ -1,13 +1,13 @@
 [ BUCKET LIST   |]
 [about] : details
-{name: swim with dolphins, complete : boolean}  
+{name: swim with dolphins, price: 500, complete: false, notes: [], picture: string, users: ['id1', 'id2'], users: ['id1', 'id2'], complete : boolean}  
 {name: swim with dolphins, complete : boolean }  
 {name: swim with dolphins, complete : boolean } 
 {name: swim with dolphins, complete : boolean }  
 
 
 See one:
--price: 500, complete: false, notes: [], picture: string, users: ['id1', 'id2'], users: ['id1', 'id2']
+-
 - copy
 
 Login
