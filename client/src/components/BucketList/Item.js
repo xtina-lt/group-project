@@ -27,16 +27,28 @@ const BucketItem = props => {
         {
             (Cookies.get("userId") && Cookies.get("userId") === item.creator)
             ?
+            <>
             <div>
                 <Form old={item} submit={"Update"}/>
                 <button onClick={handleDelete}>
                     Delete
                 </button>
             </div>
-            :
             <div>
-                not creator
+                memory box items that pertain to me will go here
             </div>
+            </>
+            :
+            <>
+            <div>
+                <h2>
+                    {item.name}
+                </h2>
+            </div>
+            <div>
+                memory box items that pertain to me will go here
+            </div>
+            </>
         }
         </>
     )

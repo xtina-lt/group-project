@@ -42,7 +42,7 @@ const Home = ({setHeader}) => {
                     </div>
                 )
             }
-            {/* {
+            {
                 temp.map( (obj,i)=>
                     (obj.done) ?
                     <div key={i} className="done">
@@ -105,7 +105,7 @@ const Home = ({setHeader}) => {
                         </button> 
                     </div>
                 )
-            } */}
+            }
             <div>
                 <h2>
                     Add Bucket Item
