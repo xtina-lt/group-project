@@ -19,9 +19,11 @@ Dashboard:
 
 
 ********** NEW: maybe joins or manual input nested *******************************************************************************
+*******DONE*****
 USERS:
 {_id: xxx, first: xxx, last: xxx, email: xxxx, password:xxx}
 
+*******DONE*****
 BUCKETITEMS:
 {_id: xxx, name: swim with dolphins, complete : boolean, creator: id} 
 {_id: xxx, name: swim with dolphins, complete : boolean, creator: id} 
@@ -35,20 +37,19 @@ MEMORIES:
 {_id: price: 500,  notes: [], picture: string, creator: user (or Cookies.get('userId')), bucketItem : bucketItem (or bucketItem._id) }
 
 _______________________________________________________________________________________________________________________________________
-
 HOME:
- - bucket.find()- > returns list of all
- - different color for complete
+ - bucket.find()- > returns list of all *******DONE*****
+ - different color for complete *******DONE*****
 
 SEE ONE:
- - memories.find( {bucketItem : bucketItem._id })  -> return list
- - edit if creator
- - add memory
+ - memories.find( {bucketItem : bucketItem._id })  -> return list *******DONE*****
+ - edit if creator *******DONE*****
+ - add memory 
  - mark complete
 
 Dash:
  - memories.find( {user : userId })  -> return list
  - map list -> show as edit form
 
-Login / REG:
- - speaks for itself lol
+Login / REG: 
+ - speaks for itself lol *******DONE*****
