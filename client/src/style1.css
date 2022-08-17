@@ -135,7 +135,13 @@ h2, h3, h4, h5, h6 {
 }
 /* TEXT MANIPULATION */
 .accent{
+    /* font */
+    font-family: Cinzel;
     color:rgba(161, 84, 76,0.9);
+    font-weight: bolder;
+    font-size: inherit;
+    /* animation */
+    animation: glow 1s ease-in-out infinite alternate;
 }
 .emoji{
     font-size: 20vh;
@@ -194,7 +200,8 @@ button, a{
 /* FORMS */
 form{
     max-width: 33vw;
-    margin: 0 auto
+    margin: 0 auto;
+    font-size: 2vh;
 }
 input, select, textarea, select:focus{
     /* background and border */

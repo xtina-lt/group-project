@@ -1,4 +1,4 @@
-const Model = require('../models/users.model')
+const Model = require('../models/user.model')
 // decrypt and encrypt passwords
 const bcrypt = require('bcrypt')
 // JWT: Json Web Token
