@@ -1,6 +1,9 @@
 const Mem = require("../models/mem.model");
 const User = require("../models/user.model");
 const jwt = require("jsonwebtoken");
+// get secret ket from .env
+require('dotenv').config()
+const SECRET = process.env.SECRET
 
 module.exports = {
   getMems: (req, res) => {
@@ -55,8 +58,8 @@ module.exports = {
   },
   createMem: (req, res) => {
     console.log(req.body)
-    const user = jwt.verify(req.cookies.userToken, SECRET);
-    Mem.create({ ...req.body, createdBy: user._id })
+    // const user = jwt.verify(req.cookies.userToken, SECRET);
+    Mem.create(req.body)
       .then((newMem) => {
         res.status(201).json(newMem);
       })

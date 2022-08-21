@@ -18,32 +18,33 @@ const MemForm = ({ list, setList, old, submit, bucket }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("in handle submit")
-    // // if we arent logged in navigate to login
-    // if (!Cookies.get("userId")) {
-    //   navigate("/login");
-    //   // if we are logged in post
-    // } else {
-    //   console.log("logged in");
-    //   console.log('else mems', mem)
-    //   axios
-    //     .post("http://localhost:8000/api/mems/new", {
-    //       ...mem,
-    //       creator: Cookies.get("userId"),
-    //     })
-    //     .then((res) => {
-    //       setErrors([]);
-    //       setSuccess(true);
-    //       // deconstruct and add object returned
-    //       //setList([...list, res.data]);
-    //       // set blank form
-    //       setMem({ name: "", price: "", notes:"", location:"", bucket: bucket});
-    //     })
-    //     .catch((res) => {
-    //       setSuccess(false);
-    //       setErrors(res.response.data.errors);
-    //     });
-    // }
+    // if we arent logged in navigate to login
+    if (!Cookies.get("userId")) {
+      navigate("/login");
+      // if we are logged in post
+    } else {
+      console.log("logged in");
+      console.log('else mems', mem)
+      axios
+        .post("http://localhost:8000/api/mems/new", {
+          ...mem,
+          creator: Cookies.get("userId"),
+        })
+        .then((res) => {
+          console.log("success", res.data)
+          setErrors([]);
+          setSuccess(true);
+          // deconstruct and add object returned
+          //setList([...list, res.data]);
+          // set blank form
+          setMem({ price: "", notes:"", location:"", bucket: bucket});
+        })
+        .catch((res) => {
+          console.log("nto success", res.response.data.errors)
+          setSuccess(false);
+          setErrors(res.response.data.errors);
+        });
+    }
   };
 
   const handleEdit = (e) => {

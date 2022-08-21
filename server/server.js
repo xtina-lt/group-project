@@ -21,6 +21,7 @@ app.use(cookieParser())
 require('./config/mongoose')
 require('./routes/users.routes')(app)
 require('./routes/buckets.routes')(app)
+require('./routes/mem.routes')(app)
 
 
 // app listen to port
