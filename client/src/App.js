@@ -7,6 +7,7 @@ import Catchall from './components/Site/Catchall';
 import Home from './components/Site/Home';
 import LoginOReg from './components/Users/LoginOReg';
 import BucketItem from './components/BucketList/Item'
+import MemForm from './components/BucketList/MemForm';
 
 function App() {
   // header default -> can change if passed to component
@@ -22,6 +23,7 @@ function App() {
             <Route exact path='/' element={<Home setHeader={setHeader}/>}/> 
             <Route exact path='/login' element={<LoginOReg/>}/>
             <Route exact path='/bucket/:id' element={<BucketItem/>}/>
+            <Route path='/memory-box' element={<MemForm/>}/>
             {/* memory */}
           </Routes>
         </BrowserRouter>

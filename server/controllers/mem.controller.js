@@ -54,6 +54,7 @@ module.exports = {
       });
   },
   createMem: (req, res) => {
+    console.log(req.body)
     const user = jwt.verify(req.cookies.userToken, SECRET);
     Mem.create({ ...req.body, createdBy: user._id })
       .then((newMem) => {

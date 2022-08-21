@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Schema = new mongoose.Schema(
   {
     price: {
-      type: Number,
+      type: String,
       required: [true, "Gimme an estimate💸"],
       minLength: [2, "Gimme some more💸"],
     },

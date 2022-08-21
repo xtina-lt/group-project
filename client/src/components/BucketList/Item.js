@@ -4,6 +4,7 @@ import axios from 'axios'
 import Form from '../BucketList/Form'
 import Cookies from 'js-cookie'
 import { useNavigate } from 'react-router-dom'
+import MemForm from './MemForm'
 
 const BucketItem = props => {
     const {id} = useParams()
@@ -35,7 +36,7 @@ const BucketItem = props => {
                 </button>
             </div>
             <div>
-                memory box items that pertain to me will go here
+                <MemForm bucket={item}/>
             </div>
             </>
             :
