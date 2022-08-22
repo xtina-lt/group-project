@@ -8,13 +8,20 @@ const MemForm = ({ list, setList, old, submit, bucket }) => {
   const [mem, setMem] = useState(
     // if there is an old item to edit use that
     old
-      ? old
+      ? 
+        old
       : // else use blank for create
-        { price: "", notes:"", location:"", bucket: bucket}
+        { price: "", notes:"", location:"", img: "", bucket: bucket}
   );
   const [success, setSuccess] = useState(false);
   const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
+
+  const changeComplete = () => {
+    axios.put(`http://localhost:8000/api/bucket/${bucket.id}`, {...bucket, complete: true})
+      .then(res => console.log('good', res))
+      .catch(res => console.log('bad change', res.response.data.errors))
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,17 +32,19 @@ const MemForm = ({ list, setList, old, submit, bucket }) => {
     } else {
       console.log("logged in");
       console.log('else mems', mem)
+      console.log("bucket", bucket)
       axios
         .post("http://localhost:8000/api/mems/new", {
-          ...mem,
+          ...mem, bucket : bucket,
           creator: Cookies.get("userId"),
         })
         .then((res) => {
           console.log("success", res.data)
+          changeComplete()
           setErrors([]);
           setSuccess(true);
           // deconstruct and add object returned
-          //setList([...list, res.data]);
+          setList([...list, res.data]);
           // set blank form
           setMem({ price: "", notes:"", location:"", bucket: bucket});
         })
@@ -51,20 +60,21 @@ const MemForm = ({ list, setList, old, submit, bucket }) => {
     e.preventDefault();
     console.log("edit and logged in");
     axios
-      .put(`http://localhost:8000/api/mem/${mem._id}`, mem)
+      .put(`http://localhost:8000/api/mems/${mem._id}`, mem)
       .then((res) => {
         setErrors([]);
         setSuccess(true);
       })
       .catch((res) => {
         setSuccess(false);
+        console.log('errors', res.response.data.errors)
         setErrors(res.response.data.errors);
       });
   };
 
   return (
     // { name: "", price: "", notes:"", location:"", bucket: bucket, creator: Cookies.get("userId") }
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={(submit) ? handleEdit: handleSubmit}>
       {/* success */}
       {success && (
         <>
@@ -85,9 +95,8 @@ const MemForm = ({ list, setList, old, submit, bucket }) => {
           )
         }
         Price:
-        {mem.price}
         <input
-          type="text"
+          type="number"
           value={mem.price}
           onChange={(e) => setMem({ ...mem, price: e.target.value })}
         />
@@ -126,7 +135,25 @@ const MemForm = ({ list, setList, old, submit, bucket }) => {
           onChange={(e) => setMem({ ...mem, location: e.target.value })}
         />
       </label>
-      {mem.bucket.name}
+      <label>
+        {
+          //IMG
+          errors.img && (
+            <>
+              <span className="accent">{errors.img.message}</span>
+              <br />
+            </>
+          )
+        }
+        <img src={mem.url}/>
+        <br/>
+        Img Src:
+        <input
+          type="text"
+          value={mem.img}
+          onChange={(e) => setMem({ ...mem, img: e.target.value })}
+        />
+      </label>
       <br/>
       <input type="submit" value={submit || "Add Memory"} />
     </form>

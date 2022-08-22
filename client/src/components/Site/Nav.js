@@ -26,14 +26,17 @@ const Nav = props => {
             <a href="https://github.com/xtina-lt/group-project">
                 GitHub
             </a>
-            <a href="/memory-box">
-                Memory Box
-            </a>
             {
-                (isLogged) ?
-                <button onClick={handleLogout}>
-                    Logout
-                </button>
+                (isLogged) 
+                ?
+                <>
+                    <a href={`/dash/${Cookies.get('userId')}`}>
+                        Memory Box
+                    </a>
+                    <button onClick={handleLogout}>
+                        Logout
+                    </button>
+                </>
                 :
                 <a href="/login">
                     Login

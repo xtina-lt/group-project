@@ -22,9 +22,9 @@ module.exports = {
     },
 
     update: (req, res) => {
-        Model.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true, runValidators: true })
-            .then(e => res.status(201).json(e) )
-            .catch( e => res.status(400).json({ message: 'something went wrong in edit bucket', errors: e.errors }) )
+        Model.findOneAndUpdate({ _id: req.body._id}, req.body, { new: true, runValidators: true })
+            .then(e => {console.log('goodchange');res.json(e)} )
+            .catch( e => {console.log('failed update'); console.log(e);res.status(400).json({ message: 'something went wrong in edit bucket', errors: e.errors }) })
     },
 
     delete: (req, res) => {

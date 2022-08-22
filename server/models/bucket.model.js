@@ -6,7 +6,7 @@ const Schema = new mongoose.Schema({
         required: [true, 'Talk to me...📸'],
         minLength: [2, 'Tell me some more...📸']
     },
-    comeplete: {
+    complete: {
         type: Boolean,
     },
     creator : {

@@ -98,8 +98,9 @@ html{
             align-items: center;
             justify-content: space-evenly;
             /* size */
-            width: 99vw;
-            height: 83vh;
+            width: 100vw;
+            height: 76vh;
+            max-height: 76vh;
             /* scroll */
             overflow-y: scroll;
             scrollbar-width: none;
@@ -109,7 +110,7 @@ html{
             animation-fill-mode: forwards;
         }
 
-            main > div{
+            main > div, main > div > div{
                 /* background and set */
                 background-color: rgba(33, 55, 63, 0.7);
                 border-radius: 3vh;
@@ -118,6 +119,15 @@ html{
                 width: fit-content;
                 max-width: 50vw;
                 height: max-content;
+            }
+            main > div{
+                max-height: 74vh;
+                /* scroll */
+                overflow-y: scroll;
+                scrollbar-width: none;
+            }
+            main > div > div{
+                margin: 1vh auto;
             }
 
     

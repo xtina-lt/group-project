@@ -1,4 +1,5 @@
 const Mem = require("../models/mem.model");
+const Bucket = require("../models/bucket.model");
 const User = require("../models/user.model");
 const jwt = require("jsonwebtoken");
 // get secret ket from .env
@@ -21,27 +22,26 @@ module.exports = {
       });
   },
   getMemsByUser: (req, res) => {
-    User.findOne({ userName: req.params.userName }).then((user) => {
-      Mem.find({ createdBy: user._id })
-        .populate("createdBy", "userName email")
-        .then((mems) => {
-          res.json(mems);
-        })
-        .catch((err) => {
-          console.log("ERROR IN Get all", err);
-          res.status(400).json({
-            message: "something went wrong in find all mems",
-            error: err,
-          });
-        })
-        .catch((err) => {
-          console.log("ERROR IN Get all", err);
-          res.status(400).json({
-            message: "something went wrong in find all mems",
-            error: err,
-          });
+    console.log('getting memories by user', req.params.id)
+    Mem.find({creator : req.params.id})
+      .then(e=> res.json(e))
+      .catch(e=> {console.log("ERROR IN get by user", err);
+            res.status(400).json({
+              message: "something went wrong in find all mems",
+              error: err,
+            }) })
+
+  },
+  getMemsByBucket: (req, res) => {
+    Mem.find({ bucket: req.params.id})
+    .then( e => res.json(e) )
+      .catch((err) => {
+        console.log("ERROR IN Get all", err);
+        res.status(400).json({
+          message: "something went wrong in find all mems",
+          error: err,
         });
-    });
+      })
   },
   getMemById: (req, res) => {
     Mem.findOne({ _id: req.params.id })
@@ -80,10 +80,10 @@ module.exports = {
         res.json(mem);
       })
       .catch((err) => {
-        console.log("ERROR IN UPDATE", err);
+        console.log("ERROR IN CREATE", err);
         res.status(400).json({
-          message: "something went wrong in update",
-          error: err,
+          message: "something went wrong in create",
+          errors: err.errors,
         });
       });
   },

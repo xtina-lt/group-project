@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Schema = new mongoose.Schema(
   {
     price: {
-      type: String,
+      type: Number,
       required: [true, "Gimme an estimate💸"],
       minLength: [2, "Gimme some more💸"],
     },
@@ -20,6 +20,9 @@ const Schema = new mongoose.Schema(
     bucket: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Bucket",
+    },
+    img:{
+      type: String
     },
     creator: {
       type: mongoose.Schema.Types.ObjectId,
