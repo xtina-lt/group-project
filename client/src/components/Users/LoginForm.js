@@ -13,7 +13,7 @@ const LoginForm = (props) => {
         axios.post('http://localhost:8000/api/login',{ email, password}, { withCredentials: true })
             .then ( res => {
                 console.log('user', res.data.user);
-                navigate(`/memory-box/${res.data.user._id}`);
+                navigate(`/dash/${res.data.user._id}`);
             })
             .catch( err => {console.log(err.response.data); setErrors(err.response.data.errors)} )
     }

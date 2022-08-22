@@ -22,12 +22,21 @@ const Dash = props => {
             .catch( res => console.log("no buckets found") )
     }
 
+    const deleteMem = (e, id) => {
+        e.preventDefault()
+        console.log('trying to delete')
+        axios.delete(`http://localhost:8000/api/mems/${id}`)
+            .then(res => {
+                console.log('worked ', res.data)
+                setArr(arr.filter(e=>e._id !== id))} )
+            .catch(res=> console.log("couldnt delete") )
+    }
+
     
     return(
         <>
-            {buckets.length}
             {
-                (arr)
+                (arr.length > 0)
                 ?
                     arr.map((obj,i) => 
                     <div key={i}>
@@ -37,10 +46,17 @@ const Dash = props => {
                         <img src={obj.img}/>
                         <br/>
                         <MemForm list={arr} setList={setArr} old={obj} submit={"update"}/>
+                        <button className="fancy-button" onClick={e=>deleteMem(e,obj._id)}>
+                            Delete
+                        </button>
                     </div>)
                 :
                 <div>
-                    Create some memories!
+                    <span className="accent">
+                        Create some memories!
+                    </span>
+                    <br/>
+                    <img src="https://i.gifer.com/UaMU.gif"/>
                 </div>
             }
         </>

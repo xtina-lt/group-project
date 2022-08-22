@@ -46,7 +46,7 @@ const MemForm = ({ list, setList, old, submit, bucket }) => {
           // deconstruct and add object returned
           setList([...list, res.data]);
           // set blank form
-          setMem({ price: "", notes:"", location:"", bucket: bucket});
+          setMem({ price: "", notes:"", location:"", bucket: bucket, img: ""});
         })
         .catch((res) => {
           console.log("nto success", res.response.data.errors)

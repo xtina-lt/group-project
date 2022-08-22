@@ -27,7 +27,7 @@ const RegisterForm = props => {
             createdAt,
             updatedAt      
         }, { withCredentials: true },)
-            .then ( res => {navigate(`/memory-box`)} )
+            .then ( res => {console.log(res.data.user._id);navigate(`/dash/${res.data.user._id}`)} )
             .catch( res => setErrors(res.response.data.errors) )
     }
 
