@@ -36,45 +36,37 @@ const BucketItem = props => {
 
     return(
         <>
-        {/* BUCKET ITEM */}
-        {
-            (Cookies.get("userId") && Cookies.get("userId") === item.creator)
-            ?
-            <>
-            <div>
-                <h2>
-                    Bucket item
-                </h2>
-                <Form old={item} submit={"Update"}/>
-                <button onClick={handleDelete}>
-                    Delete
-                </button>
-                <h2>
-                    Add a Memory
-                </h2>
-                <MemForm list={arr} setList={setArr} bucket={item}/>
-            </div>
-            </>
-            :
-            <>
-            <div className='no-background'>
-                <h2>
-                    Bucket item
-                </h2>
-                <h3>
-                    {item.name}
-                </h3>
-                <h2>
-                    Add a Memory
-                </h2>
-                <div>
-                    <MemForm list={arr} setList={setArr} bucket={item}/>
-                </div>
-            </div>
-            </>
-        }
-        {/* SHOW MEMORIES */}
         <div className='no-background'>
+            {/* BUCKET ITEM READ */}
+            {
+                (Cookies.get("userId") && Cookies.get("userId") === item.creator)
+                ?
+                <>
+                    {/*creator*/}
+                    <div>
+                        <h2>
+                            Bucket item
+                        </h2>
+                        <Form old={item} submit={"Update"}/>
+                        <button onClick={handleDelete}>
+                            Delete
+                        </button>
+                    </div>
+                </>
+                :
+                <>
+                {/* not creator*/}
+                    <div className='no-background'>
+                        <h2>
+                            Bucket item
+                        </h2>
+                        <h3>
+                            {item.name}
+                        </h3>
+                    </div>
+                </>
+            }
+            {/* READ ALL MEMORIES */}
             <h2>
                 Memories
             </h2>
@@ -98,7 +90,16 @@ const BucketItem = props => {
                     </div>
             )}
         </div>
-        {/* CREATE A MEMORY */}
+        
+        <div className='no-background'>
+            {/* CREATE A MEMORY */}
+            <div>
+                <h2>
+                    Add a Memory
+                </h2>
+                <MemForm list={arr} setList={setArr} bucket={item}/>
+            </div>
+        </div>
         </>
     )
 }
